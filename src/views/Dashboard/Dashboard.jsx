@@ -19,30 +19,7 @@ import {
     responsiveBar,
     table_data
 } from 'variables/Variables.jsx';
-// eslint-disable-next-line
-const colorScale = scaleLinear()
-.domain([0, 1, 6820])
-.range(["#E5E5E5", "#B2B2B2", "#000000"]);
-
 class Dashboard extends Component{
-    createTableData(){
-        var tableRows = [];
-        for(var i = 0; i < table_data.length; i++){
-            tableRows.push(
-                <tr key={i}>
-                    <td>
-                        <div className="flag">
-                            <img src={table_data[i].flag} alt="us_flag"/>
-                        </div>
-                    </td>
-                    <td>{table_data[i].country}</td>
-                    <td className="text-right">{table_data[i].count}</td>
-                    <td className="text-right">{table_data[i].percentage}</td>
-                </tr>
-            );
-        }
-        return tableRows;
-    }
     render(){
         return (
             <div className="main-content">
@@ -51,88 +28,67 @@ class Dashboard extends Component{
                         <Col lg={3} sm={6}>
                             <StatsCard
                                 bigIcon={<i className="pe-7s-server text-warning"></i>}
-                                statsText="Capacity"
-                                statsValue="105GB"
+                                statsText="Doanh thu"
+                                statsValue="105,000"
                                 statsIcon={<i className="fa fa-refresh"></i>}
-                                statsIconText="Updated now"
+                                statsIconText="Cập nhật ngay"
                             />
                         </Col>
                         <Col lg={3} sm={6}>
                             <StatsCard
                                 bigIcon={<i className="pe-7s-wallet text-success"></i>}
-                                statsText="Revenue"
-                                statsValue="$1,345"
+                                statsText="Hóa đơn"
+                                statsValue="345"
                                 statsIcon={<i className="fa fa-calendar-o"></i>}
-                                statsIconText="Last day"
+                                statsIconText="Hôm nay"
                             />
                         </Col>
                         <Col lg={3} sm={6}>
                             <StatsCard
                                 bigIcon={<i className="pe-7s-graph1 text-danger"></i>}
-                                statsText="Errors"
-                                statsValue="23"
+                                statsText="Hàng bán"
+                                statsValue="2993"
                                 statsIcon={<i className="fa fa-clock-o"></i>}
-                                statsIconText="In the last hour"
+                                statsIconText="Cập nhật ngay"
                             />
                         </Col>
                         <Col lg={3} sm={6}>
                             <StatsCard
                                 bigIcon={<i className="fa fa-twitter text-info"></i>}
-                                statsText="Followers"
+                                statsText="Thống kê"
                                 statsValue="+45"
                                 statsIcon={<i className="fa fa-refresh"></i>}
-                                statsIconText="Updated now"
+                                statsIconText="Cập nhật ngay"
                             />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md={12}>
-                            <Card
-                                title="Global Sales by Top Locations"
-                                category="All products that were shipped"
-                                content={
-                                    <Row>
-                                        <Col md={5}>
-                                            <div className="table-responsive">
-                                                <table className="table">
-                                                    <tbody>
-                                                        {this.createTableData()}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </Col>
-                                    
-                                </Row>
-                            }
-                        />
-                    </Col>
-                </Row>
+                    
                 <Row>
                     <Col md={4}>
                         <Card
-                            title="Email Statistics"
-                            category="Last Campaign Performance"
+                            title="Thống kê hàng bán"
+                            category="Số lượng nguyên liệu dùng trong ngày"
                             content={
                                 <ChartistGraph data={dataPie} type="Pie"/>
                             }
                             legend={
                                 <div>
-                                    <i className="fa fa-circle text-info"></i> Open
-                                    <i className="fa fa-circle text-danger"></i> Bounce
-                                    <i className="fa fa-circle text-warning"></i> Unsubscribe
+                                    <i className="fa fa-circle text-info"></i> Gà
+                                    <i className="fa fa-circle text-danger"></i> Thịt
+                                    <i className="fa fa-circle text-warning"></i> Rau củ
                                 </div>
                             }
                             stats={
                                 <div>
-                                    <i className="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                    <i className="fa fa-clock-o"></i> 2 ngày gần đây
                                 </div>
                             }
                         />
                     </Col>
                     <Col md={8}>
                         <Card
-                            title="Users Behavior"
-                            category="24 Hours performance"
+                            title="Thống kê doanh thu"
+                            category="24 giờ qua"
                             content={
                                 <ChartistGraph
                                     data={dataSales}
@@ -142,20 +98,20 @@ class Dashboard extends Component{
                                 }
                                 legend={
                                     <div>
-                                        <i className="fa fa-circle text-info"></i> Open
-                                        <i className="fa fa-circle text-danger"></i> Click
-                                        <i className="fa fa-circle text-warning"></i> Click Second Time
+                                        <i className="fa fa-circle text-info"></i> Nhà hàng 1
+                                        <i className="fa fa-circle text-danger"></i> Nhà hàng 2
+                                        <i className="fa fa-circle text-warning"></i> Nhà hàng 3
                                     </div>
                                 }
                                 stats={
                                     <div>
-                                        <i className="fa fa-history"></i> Updated 3 minutes ago
+                                        <i className="fa fa-history"></i> Cập nhật 3 phút trước
                                     </div>
                                 }
                             />
                         </Col>
                     </Row>
-                    <Row>
+                    {/* <Row>
                         <Col md={6}>
                             <Card
                                 title="2014 Sales"
@@ -181,23 +137,7 @@ class Dashboard extends Component{
                                 }
                             />
                         </Col>
-                        <Col md={6}>
-                            <Card
-                                title="Tasks"
-                                category="Backend development"
-                                content={
-                                    <table className="table">
-                                        <Tasks />
-                                    </table>
-                                }
-                                stats={
-                                    <div>
-                                        <i className="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                }
-                            />
-                        </Col>
-                    </Row>
+                    </Row> */}
                 </Grid>
             </div>
         );

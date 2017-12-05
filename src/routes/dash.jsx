@@ -16,12 +16,19 @@ import Charts from 'views/Charts/Charts.jsx';
 import Calendar from 'views/Calendar/Calendar.jsx';
 import UserPage from 'views/Pages/UserPage.jsx';
 
+import ProductAddForms from 'views/Forms/AddProductForms.jsx';
+
 import pagesRoutes from './pages.jsx';
 
 var pages = [{ path: "/pages/user-page", name: "User Page", mini: "UP", component: UserPage }].concat(pagesRoutes);
 
 var dashRoutes = [
     { path: "/dashboard", name: "Bảng tin", icon: "pe-7s-graph", component: Dashboard },
+    { path: "/bill", name: "Hóa đơn", icon: "pe-7s-graph", component: DataTables },
+    { collapse: true, path: "/product", name: "Hàng hóa", state: "openComponents", icon: "pe-7s-plugin", views:[
+        { path: "/product/manager", name: "Quản lý", mini: "B", component: DataTables },
+        { path: "/product/add", name: "Thêm mới", mini: "GS", component: ProductAddForms }]
+    },
     { collapse: true, path: "/components", name: "Hóa đơn", state: "openComponents", icon: "pe-7s-plugin", views:[
         { path: "/components/buttons", name: "Buttons", mini: "B", component: Buttons },
         { path: "/components/grid-system", name: "Grid System", mini: "GS", component: GridSystem },

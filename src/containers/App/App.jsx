@@ -7,7 +7,7 @@ import {
 
 import FixedPlugin from 'components/FixedPlugin/FixedPlugin.jsx'
 
-import image from 'assets/img/full-screen-image-3.jpg';
+import image from 'assets/img/full-screen-image-4.jpg';
 
 // dinamically create app routes
 import appRoutes from 'routes/app.jsx';
